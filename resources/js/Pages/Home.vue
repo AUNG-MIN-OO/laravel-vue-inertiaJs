@@ -3,9 +3,8 @@
 </script>
 
 <template>
-    <div>
-        <h1>Welcome from laravel + vue</h1>
-    </div>
+    <Head title="Home"/>
+    <h1>Welcome from laravel + vue</h1>
 </template>
 
 <style scoped>
