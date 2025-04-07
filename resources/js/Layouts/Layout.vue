@@ -1,5 +1,6 @@
 <script setup>
 
+import {route} from "ziggy-js";
 </script>
 <template>
     <Head>
@@ -9,8 +10,8 @@
         <header class="bg-indigo-500 text-white">
             <nav class="flex items-center justify-between p-4 mx-auto">
                 <div class="space-x-6">
-                    <Link href="/">Home</Link>
-                    <Link href="/about">About</Link>
+                    <Link :href="route('home')">Home</Link>
+                    <Link :href="route('about')">About</Link>
                 </div>
             </nav>
         </header>
