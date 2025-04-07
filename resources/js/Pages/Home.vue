@@ -1,10 +1,11 @@
 <script setup>
 
+import {route} from "ziggy-js";
 </script>
 
 <template>
     <Head :title="$page.component"/>
-    <h1>Hey {{$page.props.user}} Welcome from laravel + vue</h1>
+    <h1>Home Page</h1>
 </template>
 
 <style scoped>

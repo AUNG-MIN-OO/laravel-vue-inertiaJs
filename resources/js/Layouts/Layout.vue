@@ -7,11 +7,13 @@ import {route} from "ziggy-js";
         <title>My App</title>
     </Head>
     <div>
-        <header class="bg-indigo-500 text-white">
-            <nav class="flex items-center justify-between p-4 mx-auto">
+        <header>
+            <nav>
                 <div class="space-x-6">
-                    <Link :href="route('home')">Home</Link>
-                    <Link :href="route('about')">About</Link>
+                    <Link :href="route('home')" class="nav-link">Home</Link>
+                </div>
+                <div class="space-x-6">
+                    <Link :href="route('register')" class="nav-link">Register</Link>
                 </div>
             </nav>
         </header>
