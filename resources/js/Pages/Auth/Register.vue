@@ -1,6 +1,7 @@
 <script setup>
     import {useForm} from "@inertiajs/vue3";
     import {route} from "ziggy-js";
+    import TextInput from "@/Pages/Components/TextInput.vue";
 
     const form = useForm({
         name : null,
@@ -23,25 +24,14 @@
 
     <div class="w-2/4 mx-auto">
         <form @submit.prevent="submit">
-            <div class="mb-6">
-                <label for="name">Name</label>
-                <input type="text" id="name" v-model="form.name">
-                <small class="text-red-600 font-bold">*{{form.errors.name}}</small>
-            </div>
-            <div class="mb-6">
-                <label for="email">Email</label>
-                <input type="text" id="email" v-model="form.email">
-                <small class="text-red-600 font-bold">*{{form.errors.email}}</small>
-            </div>
-            <div class="mb-6">
-                <label for="password">Password</label>
-                <input type="text" id="password" v-model="form.password">
-                <small class="text-red-600 font-bold">*{{form.errors.password}}</small>
-            </div>
-            <div class="mb-6">
-                <label for="password_confirmation">Confirm Password</label>
-                <input type="text" id="password_confirmation" v-model="form.password_confirmation">
-            </div>
+            <TextInput name="name" v-model="form.name" :message="form.errors.name"/>
+
+            <TextInput name="email" type="email" v-model="form.email" :message="form.errors.email"/>
+
+            <TextInput name="password" v-model="form.password" :message="form.errors.password"/>
+
+            <TextInput name="password_confirmation" v-model="form.password_confirmation" :message="form.errors.password_confirmation"/>
+
             <div class="">
                 <p class="text-slate-600 mb-2">Already a user?
                     <a href="#" class="text-link">Login</a>
