@@ -9,6 +9,7 @@ import {throttle} from "lodash";
 const props = defineProps({
     users : Object,
     searchKey : String,
+    can : Object,
 })
 
 const search = ref(props.searchKey);
@@ -45,6 +46,7 @@ const formatDate = (dateStr) => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Registration Date</th>
+                <th v-if="can.delete_user">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -55,6 +57,10 @@ const formatDate = (dateStr) => {
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{formatDate(user.created_at)}}</td>
+                <td v-if="can.delete_user">
+                    <button class="bg-red-600 w-6 h-6 rounded-full">
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>

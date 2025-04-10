@@ -13,6 +13,10 @@ Route::get('/',function (Request $request){
         })->paginate(5)->withQueryString(),
 
         'searchKey' => $request->search,
+
+        'can' => [
+            'delete_user' => \Illuminate\Support\Facades\Auth::user() ? Auth::user()->can('delete', User::class) : null,
+        ]
     ]);
 })->name('home');
 
