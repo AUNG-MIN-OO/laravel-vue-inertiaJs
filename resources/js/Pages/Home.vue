@@ -2,10 +2,21 @@
 
 import {route} from "ziggy-js";
 import PaginationLinks from "@/Pages/Components/PaginationLinks.vue";
+import {ref, watch} from "vue";
+import {router} from "@inertiajs/vue3";
+import {throttle} from "lodash";
 
-defineProps({
-    users : Object
+const props = defineProps({
+    users : Object,
+    searchKey : String,
 })
+
+const search = ref(props.searchKey);
+
+watch(search,
+    throttle((s)=>router.get('/',{search : s}, {preserveState: true})
+    ,1000)
+);
 
 const formatDate = (dateStr) => {
     const date = new Date(dateStr)
@@ -22,6 +33,11 @@ const formatDate = (dateStr) => {
     <Head :title="$page.component"/>
 
     <div>
+        <div class="flex justify-end mb-4">
+            <div class="w-1/4">
+                <input type="search" placeholder="Search ..." v-model="search">
+            </div>
+        </div>
         <table>
             <thead>
             <tr class="bg-slate-300">
